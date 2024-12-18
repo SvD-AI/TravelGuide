@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryBlueDark">#003664</color>
+    <color name="primaryBlueLight">#2975A7</color>
+    <color name="accentGrayDark">#CCC1B8</color>
+    <color name="accentGrayLight">#DAE0E4</color>
+    <color name="backgroundLight">#EDEAF9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="menu_color">#BFB4AA</color>
+    <color name="card_color">#D9D5CD</color>
+    <color name="text_primary">#003664</color>
+    <color name="text_secondary">#2975A7</color>
+    <color name="background_color">#EFEDF8</color>
+</resources>

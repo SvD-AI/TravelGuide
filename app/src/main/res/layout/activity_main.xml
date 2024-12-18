@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    tools:context=".MainActivity">
+
+    <!-- Верхнє меню -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/menu_color">
+
+        <!-- Логотип -->
+        <ImageView
+            android:id="@+id/logo_tg"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_logo" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- Пошук -->
+        <ImageView
+            android:id="@+id/ic_search"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_search"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Календар -->
+        <ImageView
+            android:id="@+id/ic_calendar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_calendar" />
+    </LinearLayout>
+
+    <!-- Список карток -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Картка -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#D9D5CD"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:elevation="4dp"
+                android:clipToPadding="false"
+                android:clipChildren="false">
+
+                <!-- Назва та дата -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/card_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Назва подорожі"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#003664" />
+
+                    <TextView
+                        android:id="@+id/card_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12.12.2024"
+                        android:textSize="14sp"
+                        android:textColor="#2975A7" />
+                </LinearLayout>
+
+                <!-- Опис -->
+                <TextView
+                    android:id="@+id/card_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Країна: Данія, Міста: Копенгаген, Оденсе. Місця: Русалонька, Нюхавн."
+                    android:textSize="14sp"
+                    android:textColor="#555555" />
+
+                <!-- Нотатки -->
+                <TextView
+                    android:id="@+id/card_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Нотатки: Спробувати традиційну кухню, відвідати замок."
+                    android:textSize="12sp"
+                    android:textColor="#777777" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
