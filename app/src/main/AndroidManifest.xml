@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,6 +22,10 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".CreateTripActivity" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDcl5x8UsyZeQj8-hBnKKiPHfNd-l2Sjfc" />
+
         <activity android:name=".MapActivity" />
     </application>
 

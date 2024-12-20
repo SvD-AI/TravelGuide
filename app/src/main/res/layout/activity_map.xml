@@ -4,10 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Карта -->
-    <org.osmdroid.views.MapView
-        android:id="@+id/mapView"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <Button
+        android:id="@+id/finishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Завершити"
+        android:background="@android:color/transparent"
+        android:textColor="#FFFFFF"
+        android:elevation="4dp" />
 </RelativeLayout>
