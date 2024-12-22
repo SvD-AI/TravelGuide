@@ -55,7 +55,29 @@
             app:lottie_fileName="earth_animation.json"
             app:lottie_loop="true" />
 
+        <!-- Нотатки -->
+        <EditText
+            android:id="@+id/notesEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введіть нотатки для вашої подорожі"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:maxLines="5"
+            android:scrollbars="vertical"
+            android:layout_marginTop="16dp" />
+
+        <!-- Кнопка для збереження подорожі -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Зберегти подорож"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 
-    </ScrollView>
-
+</ScrollView>
