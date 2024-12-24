@@ -42,7 +42,7 @@ class MapActivity : AppCompatActivity() {
         // Веб-клієнт для обробки переходів
         webView.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
-                // Після завершення завантаження сторінки додати мета-тег для масштабування
+                // Мета-тег для масштабування
                 view?.evaluateJavascript(
                     """
                 var meta = document.createElement('meta');
@@ -60,29 +60,23 @@ class MapActivity : AppCompatActivity() {
             }
         }
 
-        // Ініціалізація бази даних
         tripDatabase = TripDatabase.getDatabase(this)
 
-        // Отримуємо ID подорожі з Intent
         tripId = intent.getLongExtra("TRIP_ID", 0)
         val routeUrl = intent.getStringExtra("ROUTE")
 
         if (tripId == 0L) {
-            // Якщо ID подорожі 0, показуємо стандартну Google Maps
             val gmapsUrl = "https://www.google.com/maps"
             webView.loadUrl(gmapsUrl)
         } else {
-            // Якщо ID подорожі не 0, завантажуємо маршрут із бази даних
             if (routeUrl != null && routeUrl.isNotBlank()) {
                 webView.loadUrl(routeUrl)
             } else {
-                // Якщо маршрут не знайдений в базі даних, повідомляємо про це
                 Toast.makeText(this, "Маршрут не знайдено!", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
 
-        // Налаштування кнопки "Завершити"
         val finishButton: Button = findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
             val currentUrl = webView.url
@@ -90,15 +84,14 @@ class MapActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     val trip = tripDatabase.tripDao().getTripById(tripId)
                     if (trip != null) {
-                        trip.route = currentUrl // Оновлення маршруту
-                        tripDatabase.tripDao().update(trip) // Збереження в базу
+                        trip.route = currentUrl
+                        tripDatabase.tripDao().update(trip)
                         Toast.makeText(this@MapActivity, "Маршрут збережено!", Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                // Переходимо назад до CreateTripActivity з оновленим маршрутом
                 val intent = Intent()
-                intent.putExtra("ROUTE", currentUrl) // Повертаємо маршрут
+                intent.putExtra("ROUTE", currentUrl)
                 setResult(RESULT_OK, intent)
                 finish()
             } else {

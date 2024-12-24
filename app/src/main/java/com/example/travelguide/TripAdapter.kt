@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.travelguide.database.Trip
 
 class TripAdapter(
-    private val onTripClick: (Trip) -> Unit
+    private val onTripClick: (Trip) -> Unit,
+    private val onTripLongPress: (Trip) -> Unit
 ) : ListAdapter<Trip, TripAdapter.TripViewHolder>(TripDiffCallback()) {
 
     companion object {
@@ -25,14 +26,21 @@ class TripAdapter(
         val notes: TextView = view.findViewById(R.id.card_notes)
 
         @SuppressLint("SetTextI18n")
-        fun bind(trip: Trip, onClick: (Trip) -> Unit) {
+        fun bind(trip: Trip, onClick: (Trip) -> Unit, onLongPress: (Trip) -> Unit) {
             Log.d(TAG, "Binding trip: ${trip.name}, id: ${trip.id}")
             title.text = trip.name
             date.text = formatDate(trip.date)
             notes.text = "Нотатки: ${trip.notes ?: "Немає"}"
+
             itemView.setOnClickListener {
                 Log.d(TAG, "Trip clicked: ${trip.name}, id: ${trip.id}")
                 onClick(trip)
+            }
+
+            itemView.setOnLongClickListener {
+                Log.d(TAG, "Trip long-pressed: ${trip.name}, id: ${trip.id}")
+                onLongPress(trip)
+                true
             }
         }
 
@@ -49,11 +57,10 @@ class TripAdapter(
     }
 
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
-        val trip = getItem(position)  // Отримуємо подорож з позиції
+        val trip = getItem(position)
         Log.d(TAG, "Binding ViewHolder at position $position with trip: ${trip.name}, id: ${trip.id}")
-        holder.bind(trip, onTripClick)  // Підключаємо обробку кліку
+        holder.bind(trip, onTripClick, onTripLongPress)
     }
-
 
     class TripDiffCallback : DiffUtil.ItemCallback<Trip>() {
         override fun areItemsTheSame(oldItem: Trip, newItem: Trip): Boolean {
