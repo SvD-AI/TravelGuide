@@ -1,5 +1,6 @@
 package com.example.travelguide
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -30,6 +31,7 @@ class CreateTripActivity : AppCompatActivity() {
         TripDatabase.getDatabase(this).tripDao()
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_trip)
